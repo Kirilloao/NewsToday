@@ -64,9 +64,6 @@
 		F483667F2BA76C3300751B4A /* DetailsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F483667E2BA76C3300751B4A /* DetailsModel.swift */; };
 		F48366812BA76C9000751B4A /* OnboardingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48366802BA76C9000751B4A /* OnboardingVC.swift */; };
 		F48366832BA76CB700751B4A /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48366822BA76CB700751B4A /* LoginVC.swift */; };
-		F4A593682BB333B300F923BB /* Terms&ConditionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A593672BB333B300F923BB /* Terms&ConditionsViewController.swift */; };
-		F4A5936A2BB333BA00F923BB /* LanguageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A593692BB333BA00F923BB /* LanguageViewController.swift */; };
-		F4A5936C2BB333D200F923BB /* Terms&ConditionsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A5936B2BB333D200F923BB /* Terms&ConditionsModel.swift */; };
 		F4A5935B2BB1E2B100F923BB /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A5935A2BB1E2B100F923BB /* UserDefaultsManager.swift */; };
 		F4A593722BB47BB800F923BB /* SearchArticlesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A593712BB47BB800F923BB /* SearchArticlesViewController.swift */; };
 		F4A593742BB47BCA00F923BB /* SearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A593732BB47BCA00F923BB /* SearchCell.swift */; };
@@ -77,6 +74,9 @@
 		F4A593A62BB4EEDE00F923BB /* Module Builder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A593A52BB4EEDE00F923BB /* Module Builder.swift */; };
 		F4A593A92BB4F01200F923BB /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A593A82BB4F01200F923BB /* ImageCache.swift */; };
 		F4A593AB2BB4F04B00F923BB /* UIImageView Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A593AA2BB4F04B00F923BB /* UIImageView Extension.swift */; };
+		F4C356742BB6EF5D00724D27 /* LanguageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C356732BB6EF5D00724D27 /* LanguageVC.swift */; };
+		F4C356762BB6EF7100724D27 /* TermsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C356752BB6EF7100724D27 /* TermsVC.swift */; };
+		F4C356782BB6F04600724D27 /* TermsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C356772BB6F04600724D27 /* TermsModel.swift */; };
 		F4F78CA72BAC816600EB1569 /* AppFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F78CA62BAC816600EB1569 /* AppFactory.swift */; };
 		F4F78CA92BAC818500EB1569 /* RootRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F78CA82BAC818500EB1569 /* RootRouter.swift */; };
 		F4F78CAB2BAC876700EB1569 /* UINavigationController Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F78CAA2BAC876700EB1569 /* UINavigationController Extension.swift */; };
@@ -149,9 +149,6 @@
 		F483667E2BA76C3300751B4A /* DetailsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsModel.swift; sourceTree = "<group>"; };
 		F48366802BA76C9000751B4A /* OnboardingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingVC.swift; sourceTree = "<group>"; };
 		F48366822BA76CB700751B4A /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
-		F4A593672BB333B300F923BB /* Terms&ConditionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Terms&ConditionsViewController.swift"; sourceTree = "<group>"; };
-		F4A593692BB333BA00F923BB /* LanguageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageViewController.swift; sourceTree = "<group>"; };
-		F4A5936B2BB333D200F923BB /* Terms&ConditionsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Terms&ConditionsModel.swift"; sourceTree = "<group>"; };
 		F4A5935A2BB1E2B100F923BB /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 		F4A593712BB47BB800F923BB /* SearchArticlesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchArticlesViewController.swift; sourceTree = "<group>"; };
 		F4A593732BB47BCA00F923BB /* SearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCell.swift; sourceTree = "<group>"; };
@@ -162,6 +159,9 @@
 		F4A593A52BB4EEDE00F923BB /* Module Builder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Module Builder.swift"; sourceTree = "<group>"; };
 		F4A593A82BB4F01200F923BB /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 		F4A593AA2BB4F04B00F923BB /* UIImageView Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView Extension.swift"; sourceTree = "<group>"; };
+		F4C356732BB6EF5D00724D27 /* LanguageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageVC.swift; sourceTree = "<group>"; };
+		F4C356752BB6EF7100724D27 /* TermsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsVC.swift; sourceTree = "<group>"; };
+		F4C356772BB6F04600724D27 /* TermsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsModel.swift; sourceTree = "<group>"; };
 		F4F78CA62BAC816600EB1569 /* AppFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFactory.swift; sourceTree = "<group>"; };
 		F4F78CA82BAC818500EB1569 /* RootRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootRouter.swift; sourceTree = "<group>"; };
 		F4F78CAA2BAC876700EB1569 /* UINavigationController Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController Extension.swift"; sourceTree = "<group>"; };
@@ -507,9 +507,9 @@
 		F483666A2BA76A1B00751B4A /* View */ = {
 			isa = PBXGroup;
 			children = (
-				F4A593672BB333B300F923BB /* Terms&ConditionsViewController.swift */,
-				F4A593692BB333BA00F923BB /* LanguageViewController.swift */,
-				F48366702BA76AE300751B4A /* ProfileViewController.swift */,
+				515A974D2BB497CC007F4423 /* ProfileViewController.swift */,
+				F4C356732BB6EF5D00724D27 /* LanguageVC.swift */,
+				F4C356752BB6EF7100724D27 /* TermsVC.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -541,8 +541,8 @@
 		F483667A2BA76BF600751B4A /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				F4A5936B2BB333D200F923BB /* Terms&ConditionsModel.swift */,
 				F483667B2BA76C0200751B4A /* ProfileModel.swift */,
+				F4C356772BB6F04600724D27 /* TermsModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -791,9 +791,9 @@
 				515A97472BB4210E007F4423 /* UITextField Extension.swift in Sources */,
 				F48366672BA769F400751B4A /* CategoriesPresenter.swift in Sources */,
 				F483667F2BA76C3300751B4A /* DetailsModel.swift in Sources */,
+				F4C356762BB6EF7100724D27 /* TermsVC.swift in Sources */,
 				F483662E2BA74C6C00751B4A /* UIFont Extension.swift in Sources */,
 				F48366432BA752AB00751B4A /* UIViewController Extension.swift in Sources */,
-				F4A5936C2BB333D200F923BB /* Terms&ConditionsModel.swift in Sources */,
 				D094A2C32BAAD10500FFEB5E /* BookmarkCell.swift in Sources */,
 				5D41A2FB2BA9F11F00135E7D /* RecommendedModel.swift in Sources */,
 				F4A593762BB47BE200F923BB /* SearchPresenter.swift in Sources */,
@@ -803,10 +803,11 @@
 				F48366562BA768EF00751B4A /* HomePresenter.swift in Sources */,
 				D094A2C52BAB033E00FFEB5E /* EmptyView.swift in Sources */,
 				F48366712BA76AE300751B4A /* SignInVC.swift in Sources */,
+				F4C356782BB6F04600724D27 /* TermsModel.swift in Sources */,
+				F4C356742BB6EF5D00724D27 /* LanguageVC.swift in Sources */,
 				F48366412BA7523100751B4A /* UIView Extension.swift in Sources */,
 				F48366582BA768FA00751B4A /* HomeViewController.swift in Sources */,
 				F48366292BA749DA00751B4A /* UILabel Extension.swift in Sources */,
-				F4A5936A2BB333BA00F923BB /* LanguageViewController.swift in Sources */,
 				B695B1C02BAACC9E00BE49CA /* NetworkErrors.swift in Sources */,
 				D0E403C62BB5874500C13EE5 /* PersistenceManager.swift in Sources */,
 				515A97492BB458B6007F4423 /* UIButton Extension.swift in Sources */,
@@ -821,7 +822,6 @@
 				F4F78CAB2BAC876700EB1569 /* UINavigationController Extension.swift in Sources */,
 				F4F78CB72BAC8A1B00EB1569 /* ProfileRouter.swift in Sources */,
 				F48366632BA769C200751B4A /* ProfilePresenter.swift in Sources */,
-				F4A593682BB333B300F923BB /* Terms&ConditionsViewController.swift in Sources */,
 				5D41A3012BAAB99600135E7D /* Section.swift in Sources */,
 				F4A593A12BB4EE3400F923BB /* Constants.swift in Sources */,
 				F4A5935B2BB1E2B100F923BB /* UserDefaultsManager.swift in Sources */,
