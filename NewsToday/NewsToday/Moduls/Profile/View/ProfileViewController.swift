@@ -40,31 +40,41 @@ final class ProfileViewController: UIViewController {
     
     // MARK: - UI Elements
     
-    private let languageButton: UIView = {
-        let element = UIView()
-        element.backgroundColor = .greyLighter
-        element.layer.cornerRadius = 12
-        return element
-    }()
-    
-    private let language = UILabel.makeLabel(text: "Language",
-                                            font: UIFont.InterSemiBold(ofSize: 16),
-                                            textColor: UIColor.darkGray,
-                                            numberOfLines: 1)
-    
-    private let rightAngleL: UIImageView = {
-        let element = UIImageView()
-        element.image = UIImage(named: "RightAngle")
-        return element
-    }()
-    
-    
     let profileTitle = UILabel.makeLabel(text: "Profile",
-                                  font: UIFont.InterBold(ofSize: 24),
-                                  textColor: .blackPrimary,
-                                  numberOfLines: nil)
+                                      font: UIFont.InterBold(ofSize: 24),
+                                      textColor: .blackPrimary,
+                                      numberOfLines: nil)
+        
+        let pageTitle = UIView()
     
-    let pageTitle = UIView()
+    private lazy var languageButton: UIButton = {
+        var config = UIButton.Configuration.plain()
+ 
+        config.image = UIImage(named: "Rightangle")
+        config.imagePlacement = .trailing
+        config.imagePadding = self.calculateDynamicPadding()
+        
+        let button = UIButton(configuration: config, primaryAction: nil)
+        button.setTitle("Language", for: .normal)
+        button.titleLabel?.numberOfLines = 1
+        button.titleLabel?.font = .InterSemiBold(ofSize: 16)
+        button.layer.cornerRadius = 12
+        button.backgroundColor = .greyLighter
+        button.tintColor = .darkGray
+        return button
+      }()
+    
+    private func calculateDynamicPadding() -> CGFloat {
+           let screenWidth = UIScreen.main.bounds.width
+           
+           if screenWidth > 500 {
+               return 250
+           } else {
+               return 200
+           }
+       }
+    
+    
     
     private let profileImage: UIImageView = {
         let element = UIImageView()
@@ -84,45 +94,39 @@ final class ProfileViewController: UIViewController {
                                                  textColor: UIColor.greyLight,
                                                  numberOfLines: 1)
              
-    private let termsButton: UIView = {
-        let element = UIView()
-        element.backgroundColor = .greyLighter
-        element.layer.cornerRadius = 12
-        return element
-    }()
+    private lazy var termsButton: UIButton = {
+        var config = UIButton.Configuration.plain()
+ 
+        config.image = UIImage(named: "Rightangle")
+        config.imagePlacement = .trailing
+        config.imagePadding = self.calculateDynamicPadding()
+        
+        let button = UIButton(configuration: config, primaryAction: nil)
+        button.setTitle("Terms & Conditions", for: .normal)
+        button.titleLabel?.numberOfLines = 1
+        button.titleLabel?.font = .InterSemiBold(ofSize: 16)
+        button.layer.cornerRadius = 12
+        button.backgroundColor = .greyLighter
+        button.tintColor = .darkGray
+        return button
+      }()
     
-    private let termsConditions  = UILabel.makeLabel(text: "Terms & Conditions",
-                                                     font: UIFont.InterSemiBold(ofSize: 16),
-                                                     textColor: UIColor.darkGray,
-                                                     numberOfLines: 1)
-    
-    
-    private let rightAngleT: UIImageView = {
-        let element = UIImageView()
-        element.image = UIImage(named: "RightAngle")
-        return element
-    }()
-    
-    
-    private let signoutButton: UIView = {
-        let element = UIView()
-        element.backgroundColor = .greyLighter
-        element.layer.cornerRadius = 12
-        return element
-    }()
-    
-    private let signOut  = UILabel.makeLabel(text: "Sign Out",
-                                             font: UIFont.InterSemiBold(ofSize: 16),
-                                             textColor: UIColor.darkGray,
-                                             numberOfLines: 1)
-    
-    private let signOutLabel: UIImageView = {
-        let element = UIImageView()
-        element.image = UIImage(named: "SignOut")
-        return element
-    }()
-    
-    
+    private lazy var signoutButton: UIButton = {
+        var config = UIButton.Configuration.plain()
+ 
+        config.image = UIImage(named: "SignOut")
+        config.imagePlacement = .trailing
+        config.imagePadding = self.calculateDynamicPadding()
+        
+        let button = UIButton(configuration: config, primaryAction: nil)
+        button.setTitle("Sign Out", for: .normal)
+        button.titleLabel?.numberOfLines = 1
+        button.titleLabel?.font = .InterSemiBold(ofSize: 16)
+        button.layer.cornerRadius = 12
+        button.backgroundColor = .greyLighter
+        button.tintColor = .darkGray
+        return button
+      }()
     
     // MARK: Life Cycle
     override func viewDidLoad() {
@@ -137,7 +141,7 @@ final class ProfileViewController: UIViewController {
     //MARK: Private Methods
     private func setupViews() {
         
-        [languageButton, profileTitle, pageTitle, profileImage, profileName, profileEmail, language, termsButton, termsConditions, signoutButton, signOut, rightAngleL, rightAngleT, signOutLabel].forEach { view.addSubview($0)}
+        [languageButton, profileTitle, pageTitle, profileImage, profileName, profileEmail, termsButton, signoutButton].forEach { view.addSubview($0)}
     }
     
     private func setupConstraints() {
@@ -181,38 +185,10 @@ final class ProfileViewController: UIViewController {
             make.height.equalTo(24)
         }
         
-        language.snp.makeConstraints { make in
-            make.left.equalTo(languageButton).inset(24)
-            make.top.equalTo(languageButton).inset(10)
-            make.width.equalTo(87)
-            make.height.equalTo(30)
-        }
-        
-        rightAngleL.snp.makeConstraints { make in
-            make.right.equalTo(languageButton).inset(16)
-            make.top.equalTo(languageButton).inset(12)
-            make.width.equalTo(24)
-            make.height.equalTo(30)
-        }
-        
         termsButton.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(20)
             make.bottom.equalTo(view).inset(208)
             make.height.equalTo(56)
-        }
-        
-        termsConditions.snp.makeConstraints { make in
-            make.left.equalTo(termsButton).inset(24)
-            make.top.equalTo(termsButton).inset(10)
-            make.width.equalTo(250)
-            make.height.equalTo(30)
-        }
-        
-        rightAngleT.snp.makeConstraints { make in
-            make.right.equalTo(termsButton).inset(16)
-            make.top.equalTo(termsButton).inset(12)
-            make.width.equalTo(24)
-            make.height.equalTo(30)
         }
         
         signoutButton.snp.makeConstraints { make in
@@ -220,20 +196,5 @@ final class ProfileViewController: UIViewController {
             make.bottom.equalTo(view).inset(124)
             make.height.equalTo(56)
         }
-        
-        signOut.snp.makeConstraints { make in
-            make.left.equalTo(signoutButton).inset(24)
-            make.top.equalTo(signoutButton).inset(10)
-            make.width.equalTo(200)
-            make.height.equalTo(30)
-        }
-        
-        signOutLabel.snp.makeConstraints { make in
-            make.right.equalTo(signoutButton).inset(16)
-            make.top.equalTo(signoutButton).inset(12)
-            make.width.equalTo(24)
-            make.height.equalTo(30)
-        }
-        
     }
 }
