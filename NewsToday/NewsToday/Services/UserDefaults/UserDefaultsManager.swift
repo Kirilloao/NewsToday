@@ -34,10 +34,7 @@ final class UserDefaultsManager {
     private func restoreData(forKey key: String) -> Any? {
         userDefaults.object(forKey: key)
     }
-    
-   
 }
-
 
     // MARK: UserDefaultsManagerProtocol
 
@@ -49,6 +46,10 @@ extension UserDefaultsManager: UserDefaultsManagerProtocol {
 
     func getBool(forKey key: Keys) -> Bool? {
         restoreData(forKey: key.rawValue) as? Bool
+    }
+    
+    func restoreCategories(forKey key: Keys) -> [String]? {
+        restoreData(forKey: key.rawValue) as? [String]
     }
 
     func delete(forKey key: Keys) {
