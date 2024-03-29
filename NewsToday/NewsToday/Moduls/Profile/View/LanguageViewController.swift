@@ -20,50 +20,55 @@ final class LanguageViewController: UIViewController {
     // MARK: - UI Elements
     
     private let languagePageTitle = UILabel.makeLabel(text: "Language",
-                                                      font: UIFont.InterBold(ofSize: 24),
-                                                      textColor: .blackPrimary,
-                                                      numberOfLines: nil)
+                                                          font: UIFont.InterBold(ofSize: 24),
+                                                          textColor: .blackPrimary,
+                                                          numberOfLines: nil)
     
+    private lazy var engLanguageButton: UIButton = {
+            var config = UIButton.Configuration.plain()
+     
+            config.image = UIImage(named: "Check img")
+            config.imagePlacement = .trailing
+            config.imagePadding = self.calculateDynamicPadding()
+            
+            let button = UIButton(configuration: config, primaryAction: nil)
+            button.setTitle("English", for: .normal)
+            button.titleLabel?.numberOfLines = 1
+            button.titleLabel?.font = .InterSemiBold(ofSize: 16)
+            button.layer.cornerRadius = 12
+            button.backgroundColor = .greyLighter
+            button.tintColor = .darkGray
+            return button
+          }()
+        
+        private func calculateDynamicPadding() -> CGFloat {
+               let screenWidth = UIScreen.main.bounds.width
+               
+               if screenWidth > 500 {
+                   return 250
+               } else {
+                   return 200
+               }
+           }
     
-    private let engLanguageButton: UIView = {
-        let element = UIView()
-        element.backgroundColor = .greyLighter
-        element.layer.cornerRadius = 12
-        return element
-    }()
-    
-    private let engLanguage = UILabel.makeLabel(text: "English",
-                                                font: UIFont.InterBold(ofSize: 16),
-                                                textColor: .darkGray,
-                                                numberOfLines: nil)
-    
-    private let checkSymbolE: UIImageView = {
-        let element = UIImageView()
-        element.image = #imageLiteral(resourceName: "Check img")
-        return element
-    }()
-    
-    private let rusLanguageButton: UIView = {
-        let element = UIView()
-        element.backgroundColor = .greyLighter
-        element.layer.cornerRadius = 12
-        return element
-    }()
-    
-    private let rusLanguage = UILabel.makeLabel(text: "Russian",
-                                                font: UIFont.InterBold(ofSize: 16),
-                                                textColor: .darkGray,
-                                                numberOfLines: nil)
+    private lazy var rusLanguageButton: UIButton = {
+            var config = UIButton.Configuration.plain()
+     
+            config.image = UIImage(named: "Check img")
+            config.imagePlacement = .trailing
+            config.imagePadding = self.calculateDynamicPadding()
+            
+            let button = UIButton(configuration: config, primaryAction: nil)
+            button.setTitle("Russian", for: .normal)
+            button.titleLabel?.numberOfLines = 1
+            button.titleLabel?.font = .InterSemiBold(ofSize: 16)
+            button.layer.cornerRadius = 12
+            button.backgroundColor = .greyLighter
+            button.tintColor = .darkGray
+            return button
+          }()
+        
 
-    private let checkSymbolR: UIImageView = {
-        let element = UIImageView()
-        element.image = #imageLiteral(resourceName: "Check img")
-        return element
-    }()
-    
-    
-    
-    
     // MARK: Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -75,7 +80,7 @@ final class LanguageViewController: UIViewController {
     
     //MARK: Private Methods
     private func setupViews() {
-        [ engLanguageButton, engLanguage, rusLanguageButton, rusLanguage, checkSymbolE, checkSymbolR, languagePageTitle].forEach {view.addSubview($0)}
+        [ engLanguageButton, rusLanguageButton, languagePageTitle].forEach {view.addSubview($0)}
     }
     
     private func setupConstraints() {
@@ -92,34 +97,10 @@ final class LanguageViewController: UIViewController {
             make.height.equalTo(56)
         }
         
-        engLanguage.snp.makeConstraints { make in
-            make.left.equalTo(engLanguageButton).inset(24)
-            make.top.equalTo(engLanguageButton).inset(16)
-            make.height.equalTo(24)
-        }
-        
-        checkSymbolE.snp.makeConstraints { make in
-            make.right.equalTo(engLanguageButton).inset(16)
-            make.top.equalTo(engLanguageButton).inset(16)
-            make.height.equalTo(24)
-        }
-        
         rusLanguageButton.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide).inset(152)
             make.leading.trailing.equalToSuperview().inset(20)
             make.height.equalTo(56)
-        }
-        
-        rusLanguage.snp.makeConstraints { make in
-            make.left.equalTo(rusLanguageButton).inset(24)
-            make.top.equalTo(rusLanguageButton).inset(16)
-            make.height.equalTo(24)
-        }
-        
-        checkSymbolR.snp.makeConstraints { make in
-            make.right.equalTo(rusLanguageButton).inset(16)
-            make.top.equalTo(rusLanguageButton).inset(16)
-            make.height.equalTo(24)
         }
     }
 }
