@@ -19,7 +19,7 @@ protocol ProfileRouterProtocol: RouterProtocol {
 final class ProfileRouter: ProfileRouterProtocol {
 
     var navigationController: UINavigationController?
-    var moduleBuilder: (any ProfileModuleBuilderProtocol)?
+    var moduleBuilder: ProfileModuleBuilderProtocol?
     private let factory: AppFactory
 
     init(navigationController: UINavigationController,
@@ -32,7 +32,11 @@ final class ProfileRouter: ProfileRouterProtocol {
     }
 
     func start() {
-        navigationController?.viewControllers = [factory.makeProfileViewController()]
+//        navigationController?.viewControllers = [factory.makeProfileViewController()]
+        if let navigationController = navigationController {
+            guard let profileVC = moduleBuilder?.createProfileModule(router: self) else { return }
+            navigationController.viewControllers = [profileVC]
+        }
     }
 
     func showTermsVC() {

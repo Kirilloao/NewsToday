@@ -14,7 +14,7 @@ final class ProfileModuleBuilder: ProfileModuleBuilderProtocol {
 
     func createProfileModule(router: ProfileRouterProtocol) -> UIViewController {
         let view = ProfileViewController()
-        let presenter = ProfilePresenter(view: view as! ProfileViewControllerProtocol, router: router)
+        let presenter = ProfilePresenter(view: view, router: router)
         view.presenter = presenter
         return view
     }

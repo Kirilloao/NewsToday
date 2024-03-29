@@ -197,3 +197,8 @@ private extension ProfileViewController {
         }
     }
 }
+
+// MARK: - ProfileViewControllerProtocol
+extension ProfileViewController: ProfileViewControllerProtocol {
+    
+}

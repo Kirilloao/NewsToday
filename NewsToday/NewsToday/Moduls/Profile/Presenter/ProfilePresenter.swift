@@ -9,7 +9,7 @@ protocol ProfilePresenterProtocol {
 
 final class ProfilePresenter: ProfilePresenterProtocol {
 
-    private unowned var view: ProfileViewControllerProtocol
+    private weak var view: ProfileViewControllerProtocol?
     private var router: ProfileRouterProtocol
 
     init(view: ProfileViewControllerProtocol, 
