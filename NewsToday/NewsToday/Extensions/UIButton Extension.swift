@@ -3,7 +3,7 @@ import UIKit
 //TODO: привести к единому стилю
 
 extension UIButton {
-    static func makeButton(text: String) -> UIButton {
+    static func makePurpleButton(text: String) -> UIButton {
         let button = UIButton(type: .system)
         button.setTitle(text, for: .normal)
         button.layer.cornerRadius = 10

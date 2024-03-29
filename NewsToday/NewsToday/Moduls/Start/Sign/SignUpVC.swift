@@ -80,7 +80,7 @@ final class SignUpViewController: UIViewController, UITextFieldDelegate, UITextV
         return iconContainerView
     }()
     
-    private let signInUIButton = UIButton.makeButton(text: "Sign Up")
+    private let signInUIButton = UIButton.makePurpleButton(text: "Sign Up")
     
     private let haveAccountTextView: UITextView = {
         let attributedString = NSMutableAttributedString(string: "Already have an account? Sign In")

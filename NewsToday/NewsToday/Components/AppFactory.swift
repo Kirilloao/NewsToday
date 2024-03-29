@@ -32,7 +32,7 @@ protocol AppFactory: AnyObject {
     func makeHomeRouter() -> BaseRouter
     func makeCategoriesRouter() -> BaseRouter
     func makeBookmarksRouter() -> BaseRouter
-    func makeProfileRouter() -> BaseRouter
+    func makeProfileRouter() -> ProfileRouter
 
 }
 
@@ -100,10 +100,11 @@ final class Factory: AppFactory {
         return router
     }
     
-    func makeProfileRouter() -> BaseRouter {
+    func makeProfileRouter() -> ProfileRouter {
         let navController = UINavigationController()
         navController.configureTabBarItem("profile")
-        let router = ProfileRouter(navigationController: navController, factory: self)
+        let moduleBuilder = ProfileModuleBuilder()
+        let router = ProfileRouter(navigationController: navController, factory: self, builder: moduleBuilder)
         router.start()
         return router
     }

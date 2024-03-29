@@ -9,44 +9,15 @@ final class ProfileViewController: UIViewController {
     //MARK: - Presenter
     var presenter: ProfilePresenterProtocol!
 
-
     // MARK: - UI Elements
 
     let profileTitle = UILabel.makeLabel(text: "Profile",
-                                      font: UIFont.InterBold(ofSize: 24),
-                                      textColor: .blackPrimary,
-                                      numberOfLines: nil)
+                                         font: UIFont.InterBold(ofSize: 24),
+                                         textColor: .blackPrimary,
+                                         numberOfLines: nil)
 
-        let pageTitle = UIView()
-
-    private lazy var languageButton: UIButton = {
-        var config = UIButton.Configuration.plain()
-
-        config.image = UIImage(named: "angleRight")
-        config.imagePlacement = .trailing
-        config.imagePadding = self.calculateDynamicPadding()
-
-        let button = UIButton(configuration: config, primaryAction: nil)
-        button.setTitle("Language", for: .normal)
-        button.titleLabel?.numberOfLines = 1
-        button.titleLabel?.font = .InterSemiBold(ofSize: 16)
-        button.layer.cornerRadius = 12
-        button.backgroundColor = .greyLighter
-        button.tintColor = .darkGray
-        return button
-      }()
-
-    private func calculateDynamicPadding() -> CGFloat {
-           let screenWidth = UIScreen.main.bounds.width
-
-           if screenWidth > 500 {
-               return 250
-           } else {
-               return 200
-           }
-       }
-
-
+    //что это?
+//    let pageTitle = UIView()
 
     private let profileImage: UIImageView = {
         let element = UIImageView()
@@ -66,6 +37,26 @@ final class ProfileViewController: UIViewController {
                                                  textColor: UIColor.greyLight,
                                                  numberOfLines: 1)
 
+    private lazy var languageButton: UIButton = {
+        var config = UIButton.Configuration.plain()
+
+        config.image = UIImage(named: "angleRight")
+        config.imagePlacement = .trailing
+        config.imagePadding = self.calculateDynamicPadding()
+
+        let button = UIButton(configuration: config, primaryAction: nil)
+        button.setTitle("Language", for: .normal)
+        button.titleLabel?.numberOfLines = 1
+        button.titleLabel?.font = .InterSemiBold(ofSize: 16)
+        button.layer.cornerRadius = 12
+        button.backgroundColor = .greyLighter
+        button.tintColor = .darkGray
+
+        button.addTarget(self, action: #selector(languageButtonTapped), for: .touchUpInside)
+        return button
+    }()
+
+    // MARK: -> Butttons
     private lazy var termsButton: UIButton = {
         var config = UIButton.Configuration.plain()
 
@@ -80,8 +71,10 @@ final class ProfileViewController: UIViewController {
         button.layer.cornerRadius = 12
         button.backgroundColor = .greyLighter
         button.tintColor = .darkGray
+
+        button.addTarget(self, action: #selector(termsButtonTapped), for: .touchUpInside)
         return button
-      }()
+    }()
 
     private lazy var signoutButton: UIButton = {
         var config = UIButton.Configuration.plain()
@@ -97,26 +90,60 @@ final class ProfileViewController: UIViewController {
         button.layer.cornerRadius = 12
         button.backgroundColor = .greyLighter
         button.tintColor = .darkGray
+
+        button.addTarget(self, action: #selector(signoutButtonTapped), for: .touchUpInside)
         return button
-      }()
+    }()
 
     // MARK: Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+//        presenter = ProfilePresenter()
         setupViews()
         setupConstraints()
-
     }
-
 
     //MARK: Private Methods
     private func setupViews() {
 
-        [languageButton, profileTitle, pageTitle, profileImage, profileName, profileEmail, termsButton, signoutButton].forEach { view.addSubview($0)}
+        view.backgroundColor = .white
+
+        [languageButton, profileTitle, profileImage, profileName, profileEmail, termsButton, signoutButton].forEach { view.addSubview($0)}
     }
 
-    private func setupConstraints() {
+    private func calculateDynamicPadding() -> CGFloat {
+        let screenWidth = UIScreen.main.bounds.width
+
+        if screenWidth > 500 {
+            return 250
+        } else {
+            return 200
+        }
+    }
+
+    // MARK: Selector Methods
+    @objc
+    private func languageButtonTapped() {
+        print("language button tapped")
+        self.presenter.showLanguagesVC()
+    }
+
+    @objc
+    private func termsButtonTapped() {
+        print("terms button tapped")
+        self.presenter.showTermsVC()
+    }
+
+    @objc
+    private func signoutButtonTapped() {
+        print("signout button tapped")
+        self.presenter.showLoginVC()
+    }
+}
+
+private extension ProfileViewController {
+
+    func setupConstraints() {
 
         languageButton.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(20)
@@ -129,12 +156,12 @@ final class ProfileViewController: UIViewController {
             make.left.equalTo(view).inset(20)
         }
 
-        pageTitle.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide).inset(28)
-            make.left.equalTo(view).inset(20)
-            make.width.equalTo(201)
-            make.height.equalTo(136)
-        }
+//        pageTitle.snp.makeConstraints { make in
+//            make.top.equalTo(view.safeAreaLayoutGuide).inset(28)
+//            make.left.equalTo(view).inset(20)
+//            make.width.equalTo(201)
+//            make.height.equalTo(136)
+//        }
 
         profileImage.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide).inset(92)

@@ -32,7 +32,7 @@ final class RootRouter {
             factory.makeHomeRouter().navigationController,
             factory.makeCategoriesRouter().navigationController,
             factory.makeBookmarksRouter().navigationController,
-            factory.makeProfileRouter().navigationController
+            factory.makeProfileRouter().navigationController ?? UINavigationController()
         )
     }
 

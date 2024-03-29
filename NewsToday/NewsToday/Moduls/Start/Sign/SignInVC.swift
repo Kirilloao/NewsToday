@@ -46,7 +46,7 @@ final class SignInViewController: UIViewController, UITextFieldDelegate, UITextV
         return iconContainerView
     }()
     
-    private let signInUIButton = UIButton.makeButton(text: "Sign In")
+    private let signInUIButton = UIButton.makePurpleButton(text: "Sign In")
     
     #warning("заменить https://www.example.com")
     private let haveAccountTextView: UITextView = {
