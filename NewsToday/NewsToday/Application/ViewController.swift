@@ -5,7 +5,7 @@ class ViewController: UIViewController {
     
     let userDefaultsManager = UserDefaultsManager()
     // MARK: - UI Elements
-    let label = UILabel.makeLabel(text: "Hello, world!",
+    let label = UILabel.makeLabel(text: "Hello, world!".localized(),
                                   font: UIFont.InterBold(ofSize: 20),
                                   textColor: .blackLight,
                                   numberOfLines: nil)

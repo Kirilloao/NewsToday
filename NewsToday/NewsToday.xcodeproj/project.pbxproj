@@ -29,6 +29,8 @@
 		B695B1BA2BA879F100BE49CA /* Structs.swift in Sources */ = {isa = PBXBuildFile; fileRef = B695B1B92BA879F100BE49CA /* Structs.swift */; };
 		B695B1BE2BA8830700BE49CA /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = B695B1BD2BA8830700BE49CA /* SnapKit */; };
 		B695B1C02BAACC9E00BE49CA /* NetworkErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = B695B1BF2BAACC9D00BE49CA /* NetworkErrors.swift */; };
+		B6E24EF62BB708CC000EE50D /* String Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E24EF52BB708CC000EE50D /* String Extension.swift */; };
+		B6E24EFB2BB70916000EE50D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B6E24EFD2BB70916000EE50D /* Localizable.strings */; };
 		D094A2C32BAAD10500FFEB5E /* BookmarkCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D094A2C22BAAD10500FFEB5E /* BookmarkCell.swift */; };
 		D094A2C52BAB033E00FFEB5E /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D094A2C42BAB033E00FFEB5E /* EmptyView.swift */; };
 		D094A2C72BAB99FC00FFEB5E /* (null) in Frameworks */ = {isa = PBXBuildFile; };
@@ -113,6 +115,10 @@
 		B695B1B92BA879F100BE49CA /* Structs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Structs.swift; sourceTree = "<group>"; };
 		B695B1BF2BAACC9D00BE49CA /* NetworkErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkErrors.swift; sourceTree = "<group>"; };
 		B695B1CC2BAD522100BE49CA /* APIDocumentation.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = APIDocumentation.md; sourceTree = "<group>"; };
+		B6E24EF52BB708CC000EE50D /* String Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String Extension.swift"; sourceTree = "<group>"; };
+		B6E24EF72BB708E6000EE50D /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		B6E24EFC2BB70916000EE50D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		B6E24EFE2BB7091A000EE50D /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D094A2C22BAAD10500FFEB5E /* BookmarkCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkCell.swift; sourceTree = "<group>"; };
 		D094A2C42BAB033E00FFEB5E /* EmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
 		D0E403C52BB5874400C13EE5 /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
@@ -232,6 +238,14 @@
 			path = ModuleBuilder;
 			sourceTree = "<group>";
 		};
+		B6E24EFA2BB70909000EE50D /* Localisation */ = {
+			isa = PBXGroup;
+			children = (
+				B6E24EFD2BB70916000EE50D /* Localizable.strings */,
+			);
+			path = Localisation;
+			sourceTree = "<group>";
+		};
 		F48366072BA741CE00751B4A = {
 			isa = PBXGroup;
 			children = (
@@ -279,6 +293,7 @@
 				515A97482BB458B6007F4423 /* UIButton Extension.swift */,
 				B686C0CB2BB315EA00CF1474 /* UIStackView Extension§.swift */,
 				F4A593AA2BB4F04B00F923BB /* UIImageView Extension.swift */,
+				B6E24EF52BB708CC000EE50D /* String Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -298,6 +313,7 @@
 			isa = PBXGroup;
 			children = (
 				F48366302BA74DA400751B4A /* Fonts */,
+				B6E24EFA2BB70909000EE50D /* Localisation */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -736,6 +752,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ru,
 			);
 			mainGroup = F48366072BA741CE00751B4A;
 			packageReferences = (
@@ -760,6 +777,7 @@
 				F48366372BA74DE400751B4A /* Inter-Regular.ttf in Resources */,
 				F48366352BA74DE400751B4A /* Inter-SemiBold.ttf in Resources */,
 				F483661D2BA741D000751B4A /* Assets.xcassets in Resources */,
+				B6E24EFB2BB70916000EE50D /* Localizable.strings in Resources */,
 				F48366202BA741D000751B4A /* Base in Resources */,
 				515A97502BB57A7D007F4423 /* GoogleService-Info.plist in Resources */,
 			);
@@ -808,6 +826,7 @@
 				F48366412BA7523100751B4A /* UIView Extension.swift in Sources */,
 				F48366582BA768FA00751B4A /* HomeViewController.swift in Sources */,
 				F48366292BA749DA00751B4A /* UILabel Extension.swift in Sources */,
+				B6E24EF62BB708CC000EE50D /* String Extension.swift in Sources */,
 				B695B1C02BAACC9E00BE49CA /* NetworkErrors.swift in Sources */,
 				D0E403C62BB5874500C13EE5 /* PersistenceManager.swift in Sources */,
 				515A97492BB458B6007F4423 /* UIButton Extension.swift in Sources */,
@@ -850,10 +869,20 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		B6E24EFD2BB70916000EE50D /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B6E24EFC2BB70916000EE50D /* en */,
+				B6E24EFE2BB7091A000EE50D /* ru */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		F483661E2BA741D000751B4A /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				F483661F2BA741D000751B4A /* Base */,
+				B6E24EF72BB708E6000EE50D /* ru */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -866,6 +895,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -929,6 +959,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
