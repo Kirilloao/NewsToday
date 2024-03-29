@@ -18,13 +18,13 @@ final class CategoriesViewController: UIViewController {
     var selectedCategories = [Category]()
     
     // MARK: - UI
-    private let titleLabel = UILabel.makeLabel(text: "Categories",
+    private let titleLabel = UILabel.makeLabel(text: "Categories".localized(),
                                                font: UIFont.InterSemiBold(ofSize: 24),
                                                textColor: UIColor.blackPrimary,
                                                numberOfLines: 1)
     
     private let subtitleLabel = UILabel.makeLabel(text:
-                                                    "Thousands of articles in each category",
+                                                    "Thousands of articles in each category".localized(),
                                                   font: UIFont.InterRegular(ofSize: 16),
                                                   textColor: UIColor.greyPrimary,
                                                   numberOfLines: 1)
@@ -87,6 +87,8 @@ final class CategoriesViewController: UIViewController {
             
             let button = UIButton(initBackgroundColor: .greyLighter)
             
+            button.titleLabel?.numberOfLines = 0
+            button.titleLabel?.textAlignment = .center
             button.setTitle("\(category.emoji) \(category.name)",
                             for: .normal)
 

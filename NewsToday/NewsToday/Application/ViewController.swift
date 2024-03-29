@@ -10,6 +10,19 @@ class ViewController: UIViewController {
                                   textColor: .blackLight,
                                   numberOfLines: nil)
     
+    let englishButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("English", for: .normal)
+        button.addTarget(self, action: #selector(changeLanguageToEnglish), for: .touchUpInside)
+        return button
+    }()
+    
+    let russianButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("Russian", for: .normal)
+        button.addTarget(self, action: #selector(changeLanguageToRussian), for: .touchUpInside)
+        return button
+    }()
     
     // MARK: Life Cycle
     override func viewDidLoad() {
@@ -18,7 +31,7 @@ class ViewController: UIViewController {
         layout()
         //        topHeadlinesTest()
         //        search()
-        loadAndFetchCategories()
+//        loadAndFetchCategories()
         
     }
     
@@ -60,13 +73,47 @@ class ViewController: UIViewController {
             }
         }
     }
+    // MARK: - @Objc methods    Методы для Андрея
+    @objc func changeLanguageToEnglish() {
+        userDefaultsManager.set("en", forKey: .selectedLanguage)
+        showAlertToRestartApp()
+    }
+    
+    @objc func changeLanguageToRussian() {
+        userDefaultsManager.set("ru", forKey: .selectedLanguage)
+        showAlertToRestartApp()
+    }
+    
+    private func showAlertToRestartApp() {
+        let alert = UIAlertController(title: "Language Change",
+                                      message: "Please restart the app to apply the new language.",
+                                      preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "OK",
+                                      style: .default))
+        
+        present(alert, animated: true)
+    }
+    
         //MARK: Private Methods
         private func layout() {
             view.addSubview(label)
-            
+            view.addSubview(englishButton)
+            view.addSubview(russianButton)
+                            
             label.snp.makeConstraints { make in
                 make.centerX.equalToSuperview()
                 make.centerY.equalToSuperview()
+            }
+                            
+                englishButton.snp.makeConstraints { make in
+                make.top.equalTo(label.snp.bottom).offset(20)
+                make.centerX.equalToSuperview().offset(-50)
+            }
+                            
+                russianButton.snp.makeConstraints { make in
+                make.top.equalTo(label.snp.bottom).offset(20)
+                make.centerX.equalToSuperview().offset(50)
             }
         }
     }

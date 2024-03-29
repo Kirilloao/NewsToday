@@ -11,7 +11,7 @@ import UIKit
 //        let rootRouter = factory.makeRootRouter(window!)
 //        rootRouter.start()
 //    }
-
+//}
     //запуск экрана с поиском
 //    func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
 //        guard let _ = (scene as? UIWindowScene) else { return }
@@ -44,7 +44,7 @@ import UIKit
 //}
 
 //загрузка ViewController
-
+//
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?

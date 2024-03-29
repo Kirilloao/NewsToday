@@ -1,1 +1,17 @@
 "Hello, world!" = "Привет мир!";
+//Экран CategoriesVC
+"Categories" = "Категории";
+"Thousands of articles in each category" = "Тысячи статей в каждой категории";
+"Sports" = "Спорт";
+"Life" = "Жизнь";
+"Animals" = "Животные";
+"Food" = "Еда";
+"History" = "История";
+"Middle East" = "Ближний восток";
+"Politics" = "Политика";
+"Fashion" = "Мода";
+"Gaming" = "Игры";
+"Technology" = "Технологии";
+"Art" = "Искусство";
+"Travel" = "Путешествия";
+

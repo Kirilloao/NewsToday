@@ -8,18 +8,18 @@ struct Category {
 
 struct Categories {
     static let all = [
-        Category(name: "Sports", emoji: "🏈", id: 0),
-        Category(name: "Life", emoji: "🌞", id: 1),
-        Category(name: "Animals", emoji: "🐻", id: 2),
-        Category(name: "Food", emoji: "🍔", id: 3),
-        Category(name: "History", emoji: "📜", id: 4),
-        Category(name: "Middle East", emoji: "⚔️", id: 5),
-        Category(name: "Politics", emoji: "⚖️", id: 6),
-        Category(name: "Fashion", emoji: "👗", id: 7),
-        Category(name: "Gaming", emoji: "🎮", id: 8),
-        Category(name: "Technology", emoji: "💻", id: 9),
-        Category(name: "Art", emoji: "🎨", id: 10),
-        Category(name: "Travel", emoji: "✈️", id: 11)
+        Category(name: "Sports".localized(), emoji: "🏈", id: 0),
+        Category(name: "Life".localized(), emoji: "🌞", id: 1),
+        Category(name: "Animals".localized(), emoji: "🐻", id: 2),
+        Category(name: "Food".localized(), emoji: "🍔", id: 3),
+        Category(name: "History".localized(), emoji: "📜", id: 4),
+        Category(name: "Middle East".localized(), emoji: "⚔️", id: 5),
+        Category(name: "Politics".localized(), emoji: "⚖️", id: 6),
+        Category(name: "Fashion".localized(), emoji: "👗", id: 7),
+        Category(name: "Gaming".localized(), emoji: "🎮", id: 8),
+        Category(name: "Technology".localized(), emoji: "💻", id: 9),
+        Category(name: "Art".localized(), emoji: "🎨", id: 10),
+        Category(name: "Travel".localized(), emoji: "✈️", id: 11)
         
     ]
 }
