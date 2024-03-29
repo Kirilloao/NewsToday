@@ -38,28 +38,12 @@ final class BookmarksViewController: UIViewController, BookmarksViewControllerPr
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+       
         setupConstraints()
-//        emptyView.isHidden = false
         navigationController?.setNavigationBarHidden(false, animated: true)
-   //     getFavorites()
+        presenter.viewDidLoad()
     }
     
-//    func getFavorites() {
-//        PersistenceManager.retrieveFavorites { [weak self] result in
-//            guard let self = self else { return }
-//            switch result {
-//            case .success(let favorites):
-//                self.presenter.bookmarks = favorites
-//                DispatchQueue.main.async {
-//                    self.tableView.reloadData()
-//                    self.updateEmptyViewVisibility()
-//                    self.view.bringSubviewToFront(self.tableView) // just in case the empty view is on top of the table view
-//                }
-//            case .failure(let error):
-//                print(error)
-//            }
-//        }
-//    }
 
     //MARK: - Public Methods
     
@@ -100,6 +84,23 @@ extension BookmarksViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        
+        let article = presenter.getBookmark(at: indexPath.row)
+
+        guard let articleText = article.title else { return }
+        NetworkManager.shared.fetchData(for: articleText) { result in
+            switch result {
+            case .success(let searchResults):
+                DispatchQueue.main.async {
+                    let vc = DetailsViewController()
+                    vc.data = searchResults.articles
+                    self.navigationController?.pushViewController(vc, animated: true)
+                }
+
+            case .failure(let error):
+                print("Error fetching search results: \(error)")
+            }
+        }
     }
 
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {

@@ -40,6 +40,7 @@ final class SearchArticlesViewController: UIViewController, SearchArticlesViewCo
 
     }
 
+
     //MARK: - Private methods
     private func setViews() {
         [searchBar, tableView].forEach {view.addSubview($0) }
@@ -72,6 +73,8 @@ extension SearchArticlesViewController: UITableViewDelegate, UITableViewDataSour
 
     func reloadData() {
         tableView.reloadData()
+        let savedData = UserDefaults.standard.object(forKey: Keys.favorites.rawValue) as? Data
+
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return presenter.numberOfArticles()

@@ -32,12 +32,34 @@ final class BookmarksPresenter: BookmarksPresenterProtocol {
     }
 
     func didEditingDelete(at indexPath: IndexPath) {
+        guard let articleToSave = bookmarks.first else { return }
+        PersistenceManager.updateWith(favorite: articleToSave, actionType: .remove) {
+      
+            error in
+    
+                   
+                   if let error = error as? PersistenceError, error == .alreadyInFavorites {
+                       print("Article is already in favorites")
+                   } else if let error = error {
+                       print("Error saving article: \(error)")
+                   } else {
+                       print("Article saved to favorites")
+                   }
+               }
+        
+//        PersistenceManager.updateWith(favorite: articleToSave, actionType: .remove) { error in
+//            if let error = error {
+//                                   print("Error saving article: \(error)")
+//                               }
+//        }
+        
+        
         bookmarks.remove(at: indexPath.row)
         bookmarksViewControllerProtocol?.reloadTableView()
+        
     }
     
     func retrieveBookmarks() {
-         // Retrieve bookmarks from persistence manager
          PersistenceManager.retrieveFavorites { [weak self] result in
              guard let self = self else { return }
              switch result {

@@ -15,6 +15,7 @@ final class DetailsViewController: UIViewController, DetailsViewControllerProtoc
     //MARK: - Private properties
     var data: [Article] = []
     weak private var detailsPresenterProtocol: DetailsPresenterProtocol?
+    var isArticleSaved: Bool?
 
     //MARK: - UI Components
     private let scrollView: UIScrollView = {
@@ -68,22 +69,26 @@ final class DetailsViewController: UIViewController, DetailsViewControllerProtoc
         textView.textColor = UIColor.greyDark
         return textView
     }()
-
+    private lazy var bookmarkButton = UIBarButtonItem(image: UIImage(systemName: "bookmark"), style: .plain, target: self, action: #selector(bookmarkButtonTapped))
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
         setupConstraints()
         presenter.setDetailsViewControllerProtocol(detailsViewControllerProtocol: self)
         self.detailsPresenterProtocol = presenter
-        
         configureController()
         setNavigationBar(title: "")
-
+        isArticleSaved = UserDefaults.standard.bool(forKey: Keys.favorites.rawValue)
+      
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.detailsPresenterProtocol?.getData(with: data)
+        // Check if data is already saved in UserDefaults
+        isArticleSaved = UserDefaults.standard.bool(forKey: Keys.favorites.rawValue)
+   //     updateBookmarkButtonColor()
     }
     // MARK: - Public Methods
     func setupData(with data: ([Article])) {
@@ -95,7 +100,8 @@ final class DetailsViewController: UIViewController, DetailsViewControllerProtoc
         DispatchQueue.main.async {
             let urlString = self.data.first?.urlToImage
             let articleId = self.data.first?.source.id
-            self.contentImage.loadImage(withURL: urlString ?? "https://picsum.photos/200", id: articleId ?? "")
+            self.contentImage.loadImage(withURL: urlString ?? "https://ionicframework.com/docs/img/demos/thumbnail.svg",
+                                        id: articleId ?? "")
             self.categoryLabel.text = self.data.first?.source.name
             self.headlineLabel.text = self.data.first?.title
             self.authorLabel.text = self.data.first?.author
@@ -105,27 +111,28 @@ final class DetailsViewController: UIViewController, DetailsViewControllerProtoc
     }
 
     @objc func bookmarkButtonTapped() {
-        guard let articleToSave = data.first else {
-                 // If there's no article data, there's nothing to save
-                 return
-             }
-        PersistenceManager.updateWith(favorite: articleToSave, actionType: .add) { [weak self] error in
-                   guard let self = self else { return }
-                   
-                   if let error = error as? PersistenceError, error == .alreadyInFavorites {
-                       // Handle the case where the article is already in favorites
-                       // You may want to display a message to the user
-                       print("Article is already in favorites")
-                   } else if let error = error {
-                       // Handle other errors, if any
-                       print("Error saving article: \(error)")
-                   } else {
-                       // Article successfully saved
-                       print("Article saved to favorites")
-                   }
-               }
+        guard let articleToSave = data.first else { return }
+        if isArticleSaved != true {
+     
+            PersistenceManager.updateWith(favorite: articleToSave, actionType: .add) { error in
+                if let error = error as? PersistenceError, error == .alreadyInFavorites {
+                    print("Article is already in favorites")
+                } else if let error = error {
+                    print("Error saving article: \(error)")
+                } else {
+                    print("Article saved to favorites")
+                }
+            }
+        } else {
+            PersistenceManager.updateWith(favorite: articleToSave, actionType: .remove) { _ in }
 
+
+        }
+        updateBookmarkButtonColor()
+        isArticleSaved?.toggle()
+       
     }
+
 
     @objc func shareButtonTapped() {
         guard let textToShare = data.first?.url else { return }
@@ -141,8 +148,8 @@ final class DetailsViewController: UIViewController, DetailsViewControllerProtoc
         labelView.addSubview(categoryLabel)
     }
 
+   
     private func configureController() {
-        let bookmarkButton = UIBarButtonItem(image: UIImage(named: "bookmark-icon"), style: .plain, target: self, action: #selector(bookmarkButtonTapped))
         bookmarkButton.tintColor = .white
         navigationItem.rightBarButtonItem = bookmarkButton
         shareButton.addTarget(self, action: #selector(shareButtonTapped), for: .touchUpInside)
@@ -151,6 +158,15 @@ final class DetailsViewController: UIViewController, DetailsViewControllerProtoc
         scrollView.contentInsetAdjustmentBehavior = .never
     }
 
+
+    private func updateBookmarkButtonColor() {
+        let filledImage = UIImage(systemName: "bookmark.fill")
+        let emptyImage = UIImage(systemName: "bookmark")
+        let bookmarkImage = isArticleSaved ?? true ? emptyImage : filledImage  
+        bookmarkButton.image = bookmarkImage
+    }
+
+    
     private func setupConstraints() {
         scrollView.snp.makeConstraints { make in
             make.edges.equalToSuperview()

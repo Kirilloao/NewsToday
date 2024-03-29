@@ -3,7 +3,7 @@ import Foundation
 struct NetworkManager {
     
     static let shared = NetworkManager()
-    
+ 
     private init() {}
     
     // MARK: - Private methods
@@ -57,7 +57,7 @@ struct NetworkManager {
     ) {
 
         let request = URLRequest(url: url)
-        print("URL: \(url.absoluteString)")
+       print("URL: \(url.absoluteString)")
        
         session.dataTask(with: request) {data, response, error in
             if let error = error {

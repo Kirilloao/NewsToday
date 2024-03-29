@@ -16,7 +16,7 @@ protocol UserDefaultsManagerProtocol {
 
 public enum Keys: String {
     case isLaunchedBefore = "isLaunchedBefore"
-    static let favorites = "favorites"
+    case favorites = "favorites"
 }
 
 

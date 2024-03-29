@@ -14,10 +14,9 @@ enum PersistenceError: Error {
     case alreadyInFavorites
 }
 
+typealias UpdateCompletionHandler = (Error?) -> Void
 
-enum PersistenceManager {
-  static private let defaults = UserDefaults.standard
-
+struct PersistenceManager {
     static func updateWith(favorite: Article, actionType: PersistenceActionType, completed: @escaping (Error?) -> Void) {
         retrieveFavorites { result in
             switch result {
@@ -33,7 +32,7 @@ enum PersistenceManager {
                     favorites.removeAll { $0.title == favorite.title }
                 }
                 completed(save(favorites: favorites))
-                
+                print(favorites)
             case .failure(let error):
                 completed(error)
             }
@@ -41,13 +40,10 @@ enum PersistenceManager {
     }
 
     static func retrieveFavorites(completed: @escaping (Result<[Article], Error>) -> Void) {
-        guard let favoritesData = defaults.object(forKey: Keys.favorites) as? Data else {
-            // if no data found, then need to init w/ empty array
+        guard let favoritesData = UserDefaults.standard.object(forKey: Keys.favorites.rawValue) as? Data else {
             completed(.success([]))
             return
         }
-        
-        // need do/try catch for custom object
         do {
             let decoder = JSONDecoder()
             let favorites = try decoder.decode([Article].self, from: favoritesData)
@@ -55,6 +51,8 @@ enum PersistenceManager {
         } catch {
             completed(.failure(error))
         }
+        let savedData = UserDefaults.standard.object(forKey: Keys.favorites.rawValue) as? Data
+        print("Data collected in UserDefaults: \(String(describing: savedData))")
     }
     
     static func save(favorites: [Article]) -> Error? {
@@ -62,10 +60,11 @@ enum PersistenceManager {
             let encoder = JSONEncoder()
             let encodedFavorites = try encoder.encode(favorites)
             
-            defaults.set(encodedFavorites, forKey: Keys.favorites)
+            UserDefaults.standard.set(encodedFavorites, forKey: Keys.favorites.rawValue)
             return nil
         } catch {
             return error
         }
     }
+    
 }

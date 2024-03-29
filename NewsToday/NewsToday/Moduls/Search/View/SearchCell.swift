@@ -15,7 +15,7 @@ class SearchCell: UITableViewCell {
     image.layer.cornerRadius = 12
     return image
     }()
-    let backView: UIView = {
+    private let backView: UIView = {
         let view = UIView()
         return view
     }()
@@ -44,8 +44,8 @@ class SearchCell: UITableViewCell {
 
      func set(info: Article) {
          DispatchQueue.main.async {
-             self.searchImage.loadImage(withURL: info.urlToImage ?? "https://picsum.photos/200", 
-                                        id: info.source.id ?? "")
+             self.searchImage.loadImage(withURL: info.urlToImage ?? "https://ionicframework.com/docs/img/demos/thumbnail.svg", 
+                                        id: info.source.id ?? "1")
          }
          
         categoryLabel.text = info.author
