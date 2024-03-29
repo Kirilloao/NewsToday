@@ -17,11 +17,15 @@ protocol UserDefaultsManagerProtocol {
 public enum Keys: String {
     case isLaunchedBefore = "isLaunchedBefore"
     case selectedCategories = "selectedCategories"
+    static let favorites = "favorites"
 }
+
+
 
 final class UserDefaultsManager {
 
     private let userDefaults = UserDefaults.standard
+    
 
     private func storeData(_ object: Any?, key: String) {
         userDefaults.set(object, forKey: key)
@@ -30,7 +34,10 @@ final class UserDefaultsManager {
     private func restoreData(forKey key: String) -> Any? {
         userDefaults.object(forKey: key)
     }
+    
+   
 }
+
 
     // MARK: UserDefaultsManagerProtocol
 
@@ -52,3 +59,4 @@ extension UserDefaultsManager: UserDefaultsManagerProtocol {
          return userDefaults.stringArray(forKey: key.rawValue)
      }
 }
+

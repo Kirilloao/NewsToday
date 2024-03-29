@@ -11,7 +11,36 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let rootRouter = factory.makeRootRouter(window!)
         rootRouter.start()
     }
+//    func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
+//        guard let _ = (scene as? UIWindowScene) else { return }
+//        
+//        guard let windowScene = (scene as? UIWindowScene) else { return }
+//        let window = UIWindow(windowScene: windowScene)
+//        let startVC = SearchArticlesViewController(searchText: "test")
+//        let navigationController = UINavigationController(rootViewController: startVC)
+//        window.rootViewController = navigationController
+//        window.makeKeyAndVisible()
+//        
+//        self.window = window
+//    }
 }
+
+
+//загрузка ViewController
+
+//class SceneDelegate: UIResponder, UIWindowSceneDelegate {
+//
+//    var window: UIWindow?
+//
+//    func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
+//        guard let windowScene = (scene as? UIWindowScene) else { return }
+//
+//        let window = UIWindow(windowScene: windowScene)
+//        window.rootViewController = SignUpViewController()
+//        window.makeKeyAndVisible()
+//        self.window = window
+//    }
+//}
 
 
 //загрузка ViewController
