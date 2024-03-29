@@ -37,6 +37,7 @@ final class CategoriesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         setupUI()
         setupConstraints()
     
@@ -92,6 +93,13 @@ final class CategoriesViewController: UIViewController {
             button.addTarget(self,
                              action: #selector(categoryTapped(_:)),
                              for: .touchUpInside)
+            if selectedCategories.contains(where: { $0.name == category.name }) {
+                button.backgroundColor = .purplePrimary // Цвет для выбранных категорий
+                button.setTitleColor(.white, for: .normal)
+            } else {
+                button.backgroundColor = .greyLighter // Цвет для невыбранных категорий
+                button.setTitleColor(.greyDark, for: .normal)
+            }
             
             if selectedCategories.contains(where: { $0.name == category.name }) {
                 button.backgroundColor = .purplePrimary
