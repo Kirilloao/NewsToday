@@ -12,10 +12,10 @@ final class CategoriesViewController: UIViewController {
     var presenter: CategoriesPresenterProtocol!
     
     // MARK: - Properties
+    let userDefaultsManager = UserDefaultsManager()
     var categories = [Category]()
     // здесь хранятся выбранные категории
     var selectedCategories = [Category]()
-    
     
     // MARK: - UI
     private let titleLabel = UILabel.makeLabel(text: "Categories",
@@ -37,13 +37,15 @@ final class CategoriesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         setupUI()
         setupConstraints()
     
         presenter = CategoriesPresenter()
         categories = presenter.fetchСategories()
+        
+        restoreSelectedCategoriesFromUserDefaults()
         setupCategories()
-     
     }
     
     // MARK: - Private funcs
@@ -91,6 +93,21 @@ final class CategoriesViewController: UIViewController {
             button.addTarget(self,
                              action: #selector(categoryTapped(_:)),
                              for: .touchUpInside)
+            if selectedCategories.contains(where: { $0.name == category.name }) {
+                button.backgroundColor = .purplePrimary // Цвет для выбранных категорий
+                button.setTitleColor(.white, for: .normal)
+            } else {
+                button.backgroundColor = .greyLighter // Цвет для невыбранных категорий
+                button.setTitleColor(.greyDark, for: .normal)
+            }
+            
+            if selectedCategories.contains(where: { $0.name == category.name }) {
+                button.backgroundColor = .purplePrimary
+                button.setTitleColor(.white, for: .normal)
+            } else {
+                button.backgroundColor = .greyLighter
+                button.setTitleColor(.greyDark, for: .normal)
+            }
             
             stackView.addArrangedSubview(button)
             
@@ -100,6 +117,12 @@ final class CategoriesViewController: UIViewController {
         }
     }
     
+    private func restoreSelectedCategoriesFromUserDefaults() {
+        guard let savedCategoryNames = userDefaultsManager.getStringArray(forKey: .selectedCategories) else { return }
+        
+        selectedCategories = categories.filter { savedCategoryNames.contains($0.name) }
+    }
+    // MARK: - Objcs methods
     @objc private func categoryTapped(_ sender: UIButton) {
         
         let allButtons = leftStackView.arrangedSubviews + rightStackView.arrangedSubviews
@@ -108,17 +131,21 @@ final class CategoriesViewController: UIViewController {
 
         let category = categories[index]
         
-        
-        UIView.animate(withDuration: 0.3) {
-            if self.selectedCategories.contains(where: { $0.id == category.id }) {
+        if let selectedIndex = self.selectedCategories.firstIndex(where: { $0.id == category.id }) {
+            
+            UIView.animate(withDuration: 0.3) {
                 sender.backgroundColor = .greyLighter
                 sender.setTitleColor(.greyDark, for: .normal)
-                self.selectedCategories.removeAll { $0.id == category.id }
-            } else {
+            }
+            self.selectedCategories.remove(at: selectedIndex)
+        } else {
+            UIView.animate(withDuration: 0.3) {
                 sender.backgroundColor = .purplePrimary
                 sender.setTitleColor(.white, for: .normal)
-                self.selectedCategories.append(category)
             }
+            self.selectedCategories.append(category)
         }
+        let selectedCategoryNames = self.selectedCategories.map { $0.name }
+        self.userDefaultsManager.set(selectedCategoryNames, forKey: .selectedCategories)
     }
 }
